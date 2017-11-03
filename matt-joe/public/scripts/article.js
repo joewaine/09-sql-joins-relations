@@ -82,3 +82,10 @@ Article.prototype.updateRecord = function(callback) {
     if (callback) callback();
   });
 };
+
+
+
+//
+// $.get(`/articles/1`, function(data){
+// console.log(data[0].author);
+// });
