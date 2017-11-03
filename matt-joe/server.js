@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 // DONE: Don't forget to set your own conString.
 
-// const conString = 'postgres://postgres:1234@localhost:5432/postgres';
-const conString = 'postgres://localhost:5432';
+const conString = 'postgres://postgres:1234@localhost:5432/postgres';
+// const conString = 'postgres://localhost:5432';
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', error => {
@@ -96,7 +96,7 @@ app.put('/articles/:id', function(request, response) {
     `UPDATE authors
     SET author = $2, "authorUrl" = $3
     WHERE author_id=$1;`,
-    [request.params.id, request.body.author, request.body.authorUrl]
+    [request.body.author_id, request.body.author, request.body.authorUrl]
   )
     .then(() => {
     // DONE: Write a SQL query to update an article record. Keep in mind that article records now have an author_id, in addition to title, category, publishedOn, and body.
